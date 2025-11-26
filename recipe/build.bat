@@ -2,7 +2,7 @@
 @setlocal EnableDelayedExpansion
 
 go build -o=%LIBRARY_BIN%\%PKG_NAME%.exe -ldflags="-s -X main.version=v%PKG_VERSION%" || goto :error
-go-licenses save . --save_path=license-files --ignore github.com/tj/go-update || goto :error
+go-licenses save . --save_path=license-files --ignore github.com/tj/go-update --ignore github.com/inconshrevable/mousetrap || goto :error
 
 :: Manually copy licenses that go-licenses could not download
 xcopy /s %RECIPE_DIR%\license-files\* %SRC_DIR%\license-files || goto :error
